@@ -11,7 +11,7 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
-" lets face it, we're just using defaults, so i'll keep this commented 
+" lets face it, we're just using defaults, so i'll keep this commented
 "call vundle#begin('~/some/path/here')
 "
 " let Vundle manage Vundle, required
@@ -23,25 +23,25 @@ Plugin 'VundleVim/Vundle.vim'
 " General
 Plugin 'tpope/vim-fugitive'
 Plugin 'haya14busa/incsearch.vim'
-Plugin 'junegunn/limelight.vim'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'edkolev/tmuxline.vim'
-" anything that writes text should come before the devicon plug loads
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'junegunn/goyo.vim'
+Plugin 'flazz/vim-colorschemes'
 " Old plugins
+"Plugin 'edkolev/tmuxline.vim'
+"Plugin 'christoomey/vim-tmux-navigator'
+"Plugin 'junegunn/goyo.vim'
 "Plugin 'miyakogi/conoline.vim'
+"Plugin 'junegunn/limelight.vim'
 "
 " Language specific
 " markdown
 "Plugin 'vim-pandoc/vim-pandoc'
 "Plugin 'vim-pandoc/vim-pandoc-syntax'
-Plugin 'godlygeek/tabular'
 Plugin 'JamshedVesuna/vim-markdown-preview'
+Plugin 'xuhdev/vim-latex-live-preview'
 
 
 "
@@ -61,28 +61,23 @@ augroup numbertoggle
 		autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
 augroup END
 "
-" this default color scheme
-set background=dark
+" for parenthesis
+set showmatch
 "
-" for parenthesis 
-set showmatch 
-"
-" for tabs 
+" for tabs
 set tabstop=4
-" syntax on means that functions are different colors and variables are 
-" different colors 
+" syntax on means that functions are different colors and variables are
+" different colors
 "
-" show invisibles 
+" show invisibles
 set list
 set listchars=tab:›\ ,eol:¬,trail:∙	
 "
 " Colorscheme setup
-set term=xterm
+set background=dark
 set t_Co=256
-let &t_AB="\e[48;5;%dm"
-let &t_AF="\e[38;5;%dm"
-colorscheme zellner
 syntax on
+colorscheme gruvbox
 "
 " Disable auto commenting for all files, if you want to change this just
 " change *
@@ -106,9 +101,9 @@ let g:incsearch#auto_nohlsearch = 1
 
 
 " Limelight
-let g:limelight_conceal_ctermfg = 'DarkGray'
-map <leader>l <Plug>(Limelight)
-autocmd VimEnter * Limelight
+"let g:limelight_conceal_ctermfg = 'DarkGray'
+"map <leader>l <Plug>(Limelight)
+"autocmd VimEnter * Limelight
 ""let g:limelight_conceal_ctermfg = 240
 
 
@@ -142,9 +137,9 @@ let g:ctrlp_extensions = [ 'line', 'dir']
 " not a good fix but its a fix
 let g:airline#extensions#whitespace#symbol      = '!'
 let g:airline_section_z                         = '%l/%L'
-" tabline, because i dont like the default tabline 
+" tabline, because i dont like the default tabline
 let g:airline#extensions#tabline#enabled        = 1
-" tabline, because i done like the default airline tabline 
+" tabline, because i done like the default airline tabline
 let g:airline#extensions#tabline#left_sep       = ''
 let g:airline#extensions#tabline#left_alt_sep   = ''
 let g:airline#extensions#tabline#buffer_nr_show = 0
@@ -152,7 +147,11 @@ let g:airline#extensions#tabline#buffer_nr_show = 0
 let g:airline_theme                             = 'zenburn'
 
 
-" Plugin for Dev Icons 
+" For live LaTeX previews:
+let g:livepreview_previewer = 'gv'
+
+
+" Plugin for Dev Icons
 " Note: htis should be load behind any plugins that shows on the interface
 " the thing that makes the entire thing look cool and stuffs 
 "
@@ -160,7 +159,7 @@ let g:airline_theme                             = 'zenburn'
 
 
 " settings for goyo, the thing that focuses your code so you don't always have
-" to look at the corners of the screen 
+" to look at the corners of the screen
 let g:goyo_width = 120
 function! s:goyo_enter()
 	let b:quitting = 0
@@ -184,6 +183,8 @@ autocmd! User GoyoEnter call <SID>goyo_enter()
 autocmd! User GoyoLeave call <SID>goyo_leave()
 
 
-" end of vundle 
+" end of vundle
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+" File specific settings here
