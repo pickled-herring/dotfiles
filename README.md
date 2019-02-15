@@ -18,6 +18,7 @@ These are the dotfiles that I maintain for my ubuntu computers
 	./install.sh
 	```
 This will take you to a program that installs the profile prefrences for gruvbox
+
 3. install the vim plugins:
 	```
 	vim +PluginInstall
