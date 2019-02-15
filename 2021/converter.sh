@@ -19,7 +19,7 @@ if (( dec > 32 && dec < 127 )); then
 		echo -e "\x$hex"
 fi
 if (( dec > 127 && dec < 256 )); then
-		echo -n "8bit uint: "
+		echo -n "8bit int: "
 		(( dec = dec - 256 ))
 		echo $dec
 fi
