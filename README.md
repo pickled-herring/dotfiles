@@ -1,10 +1,7 @@
 # Dotfiles
 These are the dotfiles that I maintain for my ubuntu computers
 ## Features
-* a decent vim configuration with:
-	* ctrlp
-	* vim-fugitive
-	* nerdcommenter
+* a lighter vim configuration
 * both bash and vim should have gruvbox schemes
 * More coming soon?
 ## Instructions:

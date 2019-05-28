@@ -21,10 +21,7 @@ Plugin 'VundleVim/Vundle.vim'
 " All plugins here! ------------------
 "
 " General
-Plugin 'tpope/vim-fugitive'
 Plugin 'haya14busa/incsearch.vim'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdcommenter'
@@ -35,6 +32,9 @@ Plugin 'flazz/vim-colorschemes'
 "Plugin 'junegunn/goyo.vim'
 "Plugin 'miyakogi/conoline.vim'
 "Plugin 'junegunn/limelight.vim'
+"Plugin 'ctrlpvim/ctrlp.vim'
+"Plugin 'tpope/vim-fugitive'
+"Plugin 'junegunn/vim-easy-align'
 "
 " Language specific
 " markdown
@@ -88,49 +88,22 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 set nofoldenable
 " remapped esc key
 inoremap jj <Esc>
+" remap to go to <++> in text files
+inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
 "
 " highlighting cursorline
 set cursorline
 hi CursorLine term=bold cterm=bold
+"
+" Set up fuzzy search
+set path+=**
+set wildmenu
 
 " All Plugin Settings here	------------------
 " Incsearch settings
 set hlsearch
 map / <Plug>(incsearch-forward)
 let g:incsearch#auto_nohlsearch = 1
-
-
-" Limelight
-"let g:limelight_conceal_ctermfg = 'DarkGray'
-"map <leader>l <Plug>(Limelight)
-"autocmd VimEnter * Limelight
-""let g:limelight_conceal_ctermfg = 240
-
-
-" Conoline Plugin
-"let g:conoline_color_normal_light = 'ctermbg=grey ctermfg=white'
-"let g:conoline_color_normal_dark = 'guibg=black guifg=white gui=None'
-"let g:conoline_color_insert_dark = 'guibg=black guifg=white gui=bold'
-"let g:conoline_use_colorscheme_default_normal=1
-
-
-" Plugin for text alignment
-nmap ga <Plug>(EasyAlign)
-
-" Plugin for markdown
-let vim_markdown_preview_toggle=0
-let vim_markdown_preview_github=1
-let vim_markdown_preview_hotkey='<C-m>'
-let vim_markdown_preview_browser='Mozilla Firefox'
-let vim_markdown_preview_use_xdg_open=1
-
-
-" Plugin for CtrlP
-" Nerdtree's old shortcut, now ctrlp because i use <c-p> for autocomplete
-let g:ctrlp_map        = '<c-n>'
-let g:ctrlp_cmd        = 'CtrlPLastMode'
-let g:ctrlp_extensions = [ 'line', 'dir']
-
 
 " airline for the pretty line down there
 " this is for airline pusing out of bounds of tmux:
@@ -146,41 +119,8 @@ let g:airline#extensions#tabline#buffer_nr_show = 0
 " theme
 let g:airline_theme                             = 'zenburn'
 
-
 " For live LaTeX previews:
 let g:livepreview_previewer = 'gv'
-
-
-" Plugin for Dev Icons
-" Note: htis should be load behind any plugins that shows on the interface
-" the thing that makes the entire thing look cool and stuffs 
-"
-"let g:airline_powerline_fonts = 1
-
-
-" settings for goyo, the thing that focuses your code so you don't always have
-" to look at the corners of the screen
-let g:goyo_width = 120
-function! s:goyo_enter()
-	let b:quitting = 0
-    let b:quitting_bang = 0
-	autocmd QuitPre <buffer> let b:quitting = 1
-    cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
-endfunction
-"
-function! s:goyo_leave()
-  " Quit Vim if this is the only remaining buffer
-    if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
-    	if b:quitting_bang
-      		qa!
-        else
-            qa
-        endif
-    endif
-endfunction
-"
-autocmd! User GoyoEnter call <SID>goyo_enter()
-autocmd! User GoyoLeave call <SID>goyo_leave()
 
 
 " end of vundle
