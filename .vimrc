@@ -93,6 +93,7 @@ inoremap <c-n> <Esc>/<++><Enter>"_c4l
 inoremap {} {}<Esc>ci{
 inoremap () ()<Esc>ci(
 "
+" highlighting cursorline
 set cursorline
 hi CursorLine term=bold cterm=bold
 "
