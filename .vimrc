@@ -89,11 +89,10 @@ set nofoldenable
 " remapped esc key
 inoremap jj <Esc>
 " remap to go to <++> in text files
-inoremap <c-n> <Esc>/<++><Enter>"_c4l
+map <C-n> <Esc>/<++><Enter>"_c4l
 inoremap {} {}<Esc>ci{
 inoremap () ()<Esc>ci(
 "
-" highlighting cursorline
 set cursorline
 hi CursorLine term=bold cterm=bold
 "
