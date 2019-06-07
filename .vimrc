@@ -53,8 +53,6 @@ set encoding=utf8
 " set number, set number
 set number relativenumber
 "
-" set word warpping
-set tw=115
 augroup numbertoggle
 		autocmd!
 		autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
@@ -71,7 +69,7 @@ set tabstop=4
 "
 " show invisibles
 set list
-set listchars=tab:›\ ,eol:¬,trail:∙	
+set listchars=tab:›\ ,eol:¬,trail:∙
 "
 " Colorscheme setup
 set background=dark
@@ -97,6 +95,7 @@ set cursorline
 hi CursorLine term=bold cterm=bold
 "
 " Set up fuzzy search
+set path+=~
 set path+=**
 set wildmenu
 
