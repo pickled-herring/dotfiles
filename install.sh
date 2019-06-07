@@ -1,4 +1,9 @@
-#!/usr/bin/env bash
+#!/bin/sh
+
+# Usage: ./install.sh [OPTIONS]
+#         -u  : update this directory with dotfiles from ~
+
+# TODO: this
 rsync $(awk '{printf "--exclude "$1" "}' exclude) -avh ./ ~/
 
 
