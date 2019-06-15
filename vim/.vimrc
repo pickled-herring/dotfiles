@@ -1,49 +1,6 @@
 " Welcome to the Vim configuration file!
 " Not much, but it sets up basic functionality
 
-
-" Vundle!	--------------------------
-"
-set nocompatible              " be iMproved, required
-filetype off                  " required
-"
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-" lets face it, we're just using defaults, so i'll keep this commented
-"call vundle#begin('~/some/path/here')
-"
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-
-" All plugins here! ------------------
-"
-" General
-Plugin 'haya14busa/incsearch.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'flazz/vim-colorschemes'
-" Old plugins
-"Plugin 'edkolev/tmuxline.vim'
-"Plugin 'christoomey/vim-tmux-navigator'
-"Plugin 'junegunn/goyo.vim'
-"Plugin 'miyakogi/conoline.vim'
-"Plugin 'junegunn/limelight.vim'
-"Plugin 'ctrlpvim/ctrlp.vim'
-"Plugin 'tpope/vim-fugitive'
-"Plugin 'junegunn/vim-easy-align'
-"
-" Language specific
-" markdown
-"Plugin 'vim-pandoc/vim-pandoc'
-"Plugin 'vim-pandoc/vim-pandoc-syntax'
-Plugin 'JamshedVesuna/vim-markdown-preview'
-Plugin 'xuhdev/vim-latex-live-preview'
-
-
 "
 " Editor settings ----------------------
 "
@@ -98,6 +55,48 @@ hi CursorLine term=bold cterm=bold
 set path+=~
 set path+=**
 set wildmenu
+
+" Vundle!	--------------------------
+"
+set nocompatible              " be iMproved, required
+filetype off                  " required
+"
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+" lets face it, we're just using defaults, so i'll keep this commented
+"call vundle#begin('~/some/path/here')
+"
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+
+" All plugins here! ------------------
+"
+" General
+Plugin 'haya14busa/incsearch.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'flazz/vim-colorschemes'
+" Old plugins
+"Plugin 'edkolev/tmuxline.vim'
+"Plugin 'christoomey/vim-tmux-navigator'
+"Plugin 'junegunn/goyo.vim'
+"Plugin 'miyakogi/conoline.vim'
+"Plugin 'junegunn/limelight.vim'
+"Plugin 'ctrlpvim/ctrlp.vim'
+"Plugin 'tpope/vim-fugitive'
+"Plugin 'junegunn/vim-easy-align'
+"
+" Language specific
+" markdown
+"Plugin 'vim-pandoc/vim-pandoc'
+"Plugin 'vim-pandoc/vim-pandoc-syntax'
+"Plugin 'xuhdev/vim-latex-live-preview'
+Plugin 'JamshedVesuna/vim-markdown-preview'
+
 
 " All Plugin Settings here	------------------
 " Incsearch settings
