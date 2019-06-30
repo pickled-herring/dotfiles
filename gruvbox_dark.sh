@@ -6,7 +6,7 @@ fi
 if [ ! -d .gnome-terminal-colors ]; then
 	echo "Installing gruvbox theme:"
 	git clone https://github.com/metalelf0/gnome-terminal-colors.git .gnome-terminal-colors;
+	echo -e "6\n1\nyes\n\n" | $PWD/.gnome-terminal-colors/install.sh >> /dev/null
 fi
 
-echo -e "6\n1\nyes\n\n" | $PWD/.gnome-terminal-colors/install.sh >> /dev/null
-echo -e "\n\nDone!\n"
+echo -e "Done!"

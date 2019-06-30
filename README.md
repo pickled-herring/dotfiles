@@ -17,5 +17,9 @@ Then for any dotfile that you want to install just use gnu-stow
 stow vim
 ```
 ## Configurations:
-If you want to change the colorscheme then you should be able to with `gnome-terminal-colors/install.sh`. Other vim
-colorschemes are available in `~/.vim/bundle/vim-colorschemes/colors`
+If you want to change the colorscheme then you should be able to in with `.gnome-terminal-colors/install.sh`.
+Note that this works only for gnote terminal.
+I have not yet found a reason to use another terminal.
+Other vim colorschemes are available in `~/.vim/bundle/vim-colorschemes/colors`
+## In the case of `bin/`
+Should you want to update or add to bin, mv your file to the `/path/to/dotfiles` and run stow again
