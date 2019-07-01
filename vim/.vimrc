@@ -1,60 +1,6 @@
 " Welcome to the Vim configuration file!
 " Not much, but it sets up basic functionality
 
-"
-" Editor settings ----------------------
-"
-" set utf 8
-set encoding=utf8
-"
-" set number, set number
-set number relativenumber
-"
-augroup numbertoggle
-		autocmd!
-		autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-		autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
-augroup END
-"
-" for parenthesis
-set showmatch
-"
-" for tabs
-set tabstop=4
-" syntax on means that functions are different colors and variables are
-" different colors
-"
-" show invisibles
-set list
-set listchars=tab:›\ ,eol:¬,trail:∙
-"
-" Colorscheme setup
-set background=dark
-set t_Co=256
-syntax on
-colorscheme gruvbox
-"
-" Disable auto commenting for all files, if you want to change this just
-" change *
-"
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-"
-"disable folding
-set nofoldenable
-" remapped esc key
-inoremap jj <Esc>
-" remap to go to <++> in text files
-map <C-n> <Esc>/<++><Enter>"_c4l
-inoremap {} {}<Esc>ci{
-inoremap () ()<Esc>ci(
-"
-set cursorline
-hi CursorLine term=bold cterm=bold
-"
-" Set up fuzzy search
-set path+=~
-set path+=**
-set wildmenu
 
 " Vundle!	--------------------------
 "
@@ -121,9 +67,61 @@ let g:airline_theme                             = 'zenburn'
 " For live LaTeX previews:
 let g:livepreview_previewer = 'gv'
 
-
 " end of vundle
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 " File specific settings here
+"
+" Editor settings ----------------------
+"
+" set utf 8
+set encoding=utf8
+"
+" set number, set number
+set number relativenumber
+"
+augroup numbertoggle
+		autocmd!
+		autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+		autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+augroup END
+"
+" for parenthesis
+set showmatch
+"
+" for tabs
+set tabstop=4
+" syntax on means that functions are different colors and variables are
+" different colors
+"
+" show invisibles
+set list
+set listchars=tab:›\ ,eol:¬,trail:∙
+"
+" Disable auto commenting for all files, if you want to change this just
+" change *
+"
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+"
+"disable folding
+set nofoldenable
+" remapped esc key
+inoremap jj <Esc>
+" remap to go to <++> in text files
+map <C-n> <Esc>/<++><Enter>"_c4l
+inoremap {} {}<Esc>ci{
+inoremap () ()<Esc>ci(
+"
+set cursorline
+hi CursorLine term=bold cterm=bold
+"
+" Set up fuzzy search
+set path+=~
+set path+=**
+set wildmenu
+" Colorscheme setup
+set background=dark
+set t_Co=256
+syntax on
+colo gruvbox

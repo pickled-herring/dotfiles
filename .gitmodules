@@ -1,0 +1,3 @@
+[submodule "repos/gruvbox"]
+	path = repos/gruvbox
+	url = https://github.com/morhetz/gruvbox.git
