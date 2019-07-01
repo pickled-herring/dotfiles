@@ -24,10 +24,10 @@ ls -RAp | grep -v total | grep -v '^$' |\
 				elif [[ $i =~ / ]]; then
 						echo "ignoring: $i is a directory"
 				else
-						if [[ -f $TARGET/$i ]]; then
-								mv $TARGET/$i $TARGET/$i.bak
+						if [[ ! -d $TARGET ]]; then
+								mkdir $TARGET
 						fi
-						ln -s -t $TARGET $DIR/$i
-						echo "ln -s -t $TARGET $DIR/$i"
+						ln -s -b -t $TARGET $DIR/$i
+						echo "ln -s -b -t $TARGET $DIR/$i"
 				fi
 		done
