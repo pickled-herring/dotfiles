@@ -1,33 +1,48 @@
 #!/bin/sh
-# This file is to use for when you are on a computer of which you are not
-# of the sudo group. If you do have su privileges, use stow
 
-# The usage of this shell script is the same as basic stow
+# A simple dotfiles manager which I use for bootstrapping my dotfiles to
+# any computer as long as it has sh.
+set -x
 
-if [[ ! -d $1 ]]; then
-		echo "$1 is not a directory"
+if [[ $1 == "" ]]; then
+		echo "Usage: ./install.sh <module>"
+		exit 4;
+fi
+
+if [[ "$REPO" == "" ]]; then
+		echo "\$REPO not found, using $HOME/repo instead"
+		REPO=$HOME/repo
+fi
+
+read -d '' LINKS << EOF
+bash bash/.bash_profile $HOME
+bash bash/.bashrc $HOME
+bash bash/.profile $HOME
+
+bin bin $HOME
+
+courses courses/2021/converter.sh $HOME/2021
+courses courses/2041/2041pack.sh $HOME/2041
+
+repo repo/gnome-terminal-colors $REPO
+repo repo/gruvbox $REPO
+
+vim vim/.vimrc $HOME
+
+zathura zathura/zathurarc $HOME/.config/zathura
+EOF
+
+if [[ $(echo "$LINKS" | grep $1) == "" ]]; then
+		echo "$1 not an installable module"
 		exit 1;
 fi
 
-ROOT=$PWD/$1
-TARGET=$HOME
-DIR=$ROOT
-# stuff happening
-cd $ROOT
-ls -RAp | grep -v total | grep -v '^$' |\
-		while read i
-		do
-				if [[ $i =~ : ]]; then
-						i=$( echo $i | sed s'/.$//' )
-						TARGET=$HOME/$i
-						DIR=$ROOT/$i
-				elif [[ $i =~ / ]]; then
-						echo "ignoring: $i is a directory"
-				else
-						if [[ ! -d $TARGET ]]; then
-								mkdir $TARGET
-						fi
-						ln -s -b -t $TARGET $DIR/$i
-						echo "ln -s -b -t $TARGET $DIR/$i"
-				fi
-		done
+echo "$LINKS" | sed "/^$/d" | grep "^$1" |\
+		awk '{system("\
+	if [[ ! -d "$3" ]]; then\
+			echo \""$3" not found, Aborting\"\
+			exit 3;\
+	else\
+			ln -s $PWD/"$2" "$3";\
+	fi\
+")}'
