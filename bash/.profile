@@ -5,4 +5,4 @@ if [[ -d $HOME/bin ]]; then
 fi
 export VISUAL='vim'
 export EDITOR='vim'
-export REPO="$HOME/repos"
+export REPO="$HOME/repo"
