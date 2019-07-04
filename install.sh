@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # A simple dotfiles manager which I use for bootstrapping my dotfiles to
 # any computer as long as it has sh.
@@ -41,7 +41,7 @@ fi
 
 echo "$LINKS" | sed "/^$/d" | grep "$pattern" |\
 		awk '{system("\
-	if [[ ! -d "$3" ]]; then\
+	if [ ! -d "$3" ]; then\
 			mkdir -p "$3";\
 	else\
 			ln -s $PWD/"$2" "$3";\
