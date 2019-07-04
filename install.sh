@@ -44,6 +44,6 @@ echo "$LINKS" | sed "/^$/d" | grep "$pattern" |\
 	if [ ! -d "$3" ]; then\
 			mkdir -p "$3";\
 	else\
-			ln -s $PWD/"$2" "$3";\
+			ln -s -f $PWD/"$2" "$3";\
 	fi\
 ")}'
