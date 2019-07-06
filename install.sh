@@ -1,9 +1,10 @@
 #!/bin/bash
 
 # A simple dotfiles manager which I use for bootstrapping my dotfiles to
-# any computer as long as it has sh.
+# any computer as long as it has bash.
 if [[ $1 == "" ]]; then
 		echo "Usage: ./install.sh <module>"
+		echo "see README.md for more"
 		exit 4;
 fi
 
@@ -18,6 +19,7 @@ bash bash/.bashrc $HOME
 bash bash/.profile $HOME
 
 bin bin $HOME
+repo repo $HOME
 
 courses courses/2021/converter.sh $HOME/2021
 courses courses/2041/2041pack.sh $HOME/2041

@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Backup utility for local home file.
+
+DEST=$HOME/backup
+DATE=$(date -I)
+HOST=$(uname -n)
+
+if [ ! -d $DEST ]; then
+		echo "$DEST not found, creating"
+		mkdir -p $DEST
+fi
+
+ARCHIVE="$HOST-$DATE.tgz"
+
+tar -czvf $DEST/$ARCHIVE $HOME --exclude=.cache --exclude=$DEST
+echo "saved to $DEST/$ARCHIVE"
