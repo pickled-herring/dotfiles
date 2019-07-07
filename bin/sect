@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# shell script to catch a paragraph or section of input
+# this can be from file or stdin
+
+BOLD="\033[1m"
+EXIT="\033[0m"
+
+_usage_(){
+	cat <<EOF
+	$BOLD $(basename "$0") header footer file $EXIT 
+	Shell script to catch a paragraph or section between a header and a
+	footer from a file.
+EOF
+}
+
+# Actually no don't do usage stuffs until you find out how to do
+# program logic
+HEADER=$1
+FOOTER=$2
+FILE=$3
+
+cat $FILE | sed -n "/$HEADER/,/$FOOTER/p" | head -n -1 | tail -n +2

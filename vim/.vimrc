@@ -114,7 +114,7 @@ inoremap {} {}<Esc>ci{
 inoremap () ()<Esc>ci(
 "
 set cursorline
-hi CursorLine term=bold cterm=bold
+hi CursorLine term=none cterm=none
 "
 " Set up fuzzy search
 set path+=~
