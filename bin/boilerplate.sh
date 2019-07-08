@@ -39,17 +39,19 @@ EXIT="\033[0m"
 
 # Usage
 _usage_(){
+BOLD="\033[1m"
+EXIT="\033[0m"
+echo "$BOLD $(basename "$0") [OPTION] ... [FILE] ... $EXIT"
+
+# Description
 	cat <<EOF
-	$BOLD $(basename "$0") [OPTION] ... [FILE] ... $EXIT
+<++>
+EOF
 
-	This here is a description of what this thingy does
-	what say you?
-
-	$BOLD Options: $EXIT
-		-a		Does something
-		-b		Does something
-		-c		Does something
-		-d		Does something
+echo "$BOLD Options: $EXIT"
+	
+	cat <<EOF
+	-a <++>
 EOF
 }
 
@@ -57,7 +59,6 @@ EOF
 while getopts 'abc:h?' c; do
 		case $c in
 				a) echo "a";;
-				b) echo "b";;
 				c) echo "c: $OPTARG";;
 				h|?) echo "usage something something";;
 esac
@@ -66,3 +67,5 @@ done
 shift $((OPTIND -1))
 # from here on out use $1, $2, ... as normal
 # this requires you to take input as so: <something> [OPTIONS] [ARGS]
+
+# End

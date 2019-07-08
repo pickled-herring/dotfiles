@@ -1,0 +1,38 @@
+# Newsbeuter config file
+browser firefox
+cleanup-on-quit no
+download-full-page yes
+player "alsaplayer -i text"
+external-url-viewer "urlview"
+
+# Binds
+bind-key j down
+bind-key k up
+bind-key j next articlelist
+bind-key k prev articlelist
+bind-key J next-feed articlelist
+bind-key K prev-feed articlelist
+
+# Formatting
+color info                                           black    default    reverse bold
+color listfocus                                      white    default    dim bold
+color listnormal                                     white    default    dim
+color listfocus_unread                               white    default    bold
+color listnormal_unread                              white    default
+color article                                        white    default
+
+articlelist-format "%4i %f %D  %?T?|%-17T| ?%t"
+
+highlight feedlist    "^  *[0-9]+  *N  "                    green    default
+
+highlight article     "(^Feed:.*|^Title:.*|^Author:.*)"     green    default
+highlight article     "(^Link:.*|^Date:.*)"                 green    default
+highlight article     "^Podcast Download URL:.*"            red      default
+highlight article     "^Links:"                             white    default  reverse underline
+highlight article     "\\[[0-9][0-9]*\\]"                   blue     default  bold
+highlight article     "\\[image [0-9][0-9]*\\]"		        blue     default  bold
+highlight article     "\\[embedded flash: [0-9][0-9]*\\]"   blue     default  bold
+highlight article     ":.*\\(link\\)$"                      blue     default
+highlight article     ":.*\\(image\\)$"                     blue     default
+highlight article     ":.*\\(embedded flash\\)$"            blue     default
+

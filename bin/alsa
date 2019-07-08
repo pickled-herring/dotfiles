@@ -1,0 +1,57 @@
+#!/bin/sh
+
+# alsaplayer script
+_usage_(){
+	BOLD="\033[1m"
+	EXIT="\033[0m"
+echo "$BOLD $(basename "$0") [OPTION] $EXIT"
+cat <<EOF
+	A simple wrapper around alsaplayer
+EOF
+
+echo "$BOLD Options: $EXIT"
+cat <<EOF
+	-p        Pause the playback
+	-n        next track
+	-b        previous track
+	-s        status
+	-q        quit session
+	-c        clear playlist
+	-e <file> enqueue a file
+EOF
+}
+
+play_toggle(){
+if [ "$(alsaplayer --status | grep speed)" == "speed: 0%" ]; then
+		alsaplayer --start
+else
+		alsaplayer --pause
+fi
+}
+
+enqueue(){
+if [ -d "$1" ]; then
+		alsaplayer --e $1/*.mp3
+elif [ -f "$1" ]; then
+		alsaplayer --e $1
+else
+		echo "$1 not found"
+fi
+}
+
+if [ "$(alsaplayer --status | grep name)" != "name: 0" ]; then
+	alsaplayer -i daemon -s 0 &
+fi
+
+while getopts 'qpsnbce:h?' c; do
+		case $c in
+				p) play_toggle; exit 0;;
+				n) alsaplayer --next; exit 0;;
+				b) alsaplayer --prev; exit 0;;
+				s) alsaplayer --status; exit 0;;
+				q) alsaplayer --quit; exit 0;;
+				c) alsaplayer --clear; exit 0;;
+				e) enqueue $OPTARG;;
+				h|?) _usage_;;
+esac
+done

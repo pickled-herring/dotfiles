@@ -27,6 +27,8 @@ courses courses/2041/2041pack.sh $HOME/2041
 vim vim/.vimrc $HOME
 
 zathura zathura/zathurarc $HOME/.config/zathura
+
+news news/config $HOME/.newsbeuter/
 EOF
 
 if [[ "$1" != "all" && $(echo "$LINKS" | grep $1) == "" ]]; then
