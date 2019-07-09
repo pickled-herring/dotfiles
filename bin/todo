@@ -2,35 +2,109 @@
 
 # a small todo script
 # make sure $HOME/todo exists
-#set -x
+set -e
 DIR=$HOME/todo
-
-# Formatting
-BOLD="\033[1m"
-
-RED="\033[31m"
-GREEN="\033[32m"
-BLUE="\033[34m"
-MANGETA="\033[35m"
-
-L_RED="\033[91m"
-L_GREEN="\033[92m"
-L_BLUE="\033[94m"
-L_MANGETA="\033[95m"
-
-EXIT="\033[0m"
-
-# Usage
-
 if [ ! -f $DIR ]; then
 		echo "todo missing, creating $DIR"
 		touch $DIR
 fi
 
-# make sure todo is sorted
-echo "$(cat $DIR | sort)" > $DIR
+# Formatting
+GREY="\033[37m"
+EXIT="\033[0m"
 
-echo "You have $RED$(cat $DIR | grep -c 'a |')$EXIT things on the todo list"
-cat -n $DIR | grep 'a |' | 
-		awk -F "|" '{system("echo \"\\033[94m"$1" \\033[92m"$4" \
-\\033[31m(Due in $(($(($(date -d "$3" \"+%s\") - $(date \"+%s\"))) / 86400)) days)\033[0m\" ")}'
+# Ops
+_sort_(){
+echo "$(cat $DIR | sort)" > $DIR
+}
+
+_list_(){
+echo "$GREY You have $(cat $DIR | grep -c 'a |') things on the todo list$EXIT"
+cat -n $DIR | grep 'a |' |\
+		awk -F "|" '{system("echo \"\\033[94m"$1" \\033[0m"$4" \
+\\033[32m($(($(($(date -d "$3" \"+%s\") - $(date \"+%s\"))) / 86400)) days left)\033[0m\" ")}'
+}
+
+_done_(){
+cat $DIR | grep 'z |' | awk -F "|" '{print $4" due at "$3}'
+}
+
+_del_(){
+sed -i "$1 s/| a |/| z |/" $DIR
+_sort_
+}
+
+_add_(){
+date -d "$2" >> /dev/null
+echo "| a | $(date -d "$2" "+%F") | $1" >> $DIR
+_sort_
+}
+
+_push_(){
+date -d "$2" >> /dev/null
+echo "pushing item at $1 to $(date -d "$2" "+%F")";
+sed -i "$1 s/| [0-9]*-[0-9]*-[0-9]* |/| $(date -d "$2" "+%F") |/" $DIR
+_sort_
+}
+
+_edit_(){
+echo "changing message at $1 to $2"
+sed -i "$1 s/| [^|]*$/| $2/" $DIR
+}
+
+# Usage
+_usage_(){
+BOLD="\033[1m"
+echo "$BOLD $(basename "$0") $EXIT"
+echo "$BOLD $(basename "$0") -a|--add <item todo> <date>$EXIT"
+echo "$BOLD $(basename "$0") -d|--done <index>$EXIT"
+echo "$BOLD $(basename "$0") -p|--push <index> <date>$EXIT"
+echo "$BOLD $(basename "$0") -e|--edit <index> <message>$EXIT"
+
+	cat <<EOF
+A simple todo script for all of your scheduling needs
+EOF
+
+echo "$BOLD Examples: $EXIT"
+	
+	cat <<EOF
+	todo
+	todo -a "Compsci Homework" "Sep 6"
+	todo --add "Call mom" "next week"
+
+	# To get a list of what indexes to use, just run todo. The indexes
+	# are in blue
+	todo
+	todo -d 2
+	todo -p 3 "Jul 30 2020"
+	todo -e 1 "This needed changing"
+EOF
+
+echo "$BOLD Options: $EXIT"
+	cat <<EOF
+	-a|--add <item> <date>    Adds an item to the todo list, if no date is listed
+                              the item will have the due date of "today"
+
+	-d|--done <index>         Marks the item as done
+
+	-p|--push <index> <date>  Change the item's due date
+
+	-e|--edit <index> <date>  Change the message of the item
+EOF
+}
+
+# Input
+if [ "$#" -eq "0" ]; then
+		_list_;
+		exit 0;
+fi
+
+case $1 in
+		"-f") _done_;;
+		"-d"|"--done") _del_ "$2";;
+		"-a"|"--add") _add_ "$2" "$3";; # --add message date
+		"-p"|"--push") _push_ "$2" "$3";;# --push index date
+		"-e"|"--edit") _edit_ "$2" "$3";; # --edit index message
+		"-h"|"--help") _usage_;;
+		*) _usage_;;
+esac

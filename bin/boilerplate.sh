@@ -43,7 +43,6 @@ BOLD="\033[1m"
 EXIT="\033[0m"
 echo "$BOLD $(basename "$0") [OPTION] ... [FILE] ... $EXIT"
 
-# Description
 	cat <<EOF
 <++>
 EOF
