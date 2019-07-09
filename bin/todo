@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # a small todo script
 # make sure $HOME/todo exists
@@ -19,9 +19,9 @@ echo "$(cat $DIR | sort)" > $DIR
 }
 
 _list_(){
-echo "$GREY You have $(cat $DIR | grep -c 'a |') things on the todo list$EXIT"
+echo -e "$GREY You have $(cat $DIR | grep -c 'a |') things on the todo list$EXIT"
 cat -n $DIR | grep 'a |' |\
-		awk -F "|" '{system("echo \"\\033[94m"$1" \\033[0m"$4" \
+		awk -F "|" '{system("echo -e \"\\033[94m"$1" \\033[0m"$4" \
 \\033[32m($(($(($(date -d "$3" \"+%s\") - $(date \"+%s\"))) / 86400)) days left)\033[0m\" ")}'
 }
 
@@ -31,41 +31,37 @@ cat $DIR | grep 'z |' | awk -F "|" '{print $4" due at "$3}'
 
 _del_(){
 sed -i "$1 s/| a |/| z |/" $DIR
-_sort_
 }
 
 _add_(){
 date -d "$2" >> /dev/null
 echo "| a | $(date -d "$2" "+%F") | $1" >> $DIR
-_sort_
 }
 
 _push_(){
 date -d "$2" >> /dev/null
-echo "pushing item at $1 to $(date -d "$2" "+%F")";
 sed -i "$1 s/| [0-9]*-[0-9]*-[0-9]* |/| $(date -d "$2" "+%F") |/" $DIR
-_sort_
 }
 
 _edit_(){
-echo "changing message at $1 to $2"
 sed -i "$1 s/| [^|]*$/| $2/" $DIR
 }
 
 # Usage
 _usage_(){
 BOLD="\033[1m"
-echo "$BOLD $(basename "$0") $EXIT"
-echo "$BOLD $(basename "$0") -a|--add <item todo> <date>$EXIT"
-echo "$BOLD $(basename "$0") -d|--done <index>$EXIT"
-echo "$BOLD $(basename "$0") -p|--push <index> <date>$EXIT"
-echo "$BOLD $(basename "$0") -e|--edit <index> <message>$EXIT"
+echo -e "$BOLD $(basename "$0") $EXIT"
+echo -e "$BOLD $(basename "$0") -a|--add <item todo> <date>$EXIT"
+echo -e "$BOLD $(basename "$0") -d|--done <index>$EXIT"
+echo -e "$BOLD $(basename "$0") -p|--push <index> <date>$EXIT"
+echo -e "$BOLD $(basename "$0") -e|--edit <index> <message>$EXIT\n"
+echo -e "$BOLD Description: $EXIT"
 
 	cat <<EOF
-A simple todo script for all of your scheduling needs
+	A simple todo script for all of your scheduling needs
 EOF
 
-echo "$BOLD Examples: $EXIT"
+echo -e "$BOLD Examples: $EXIT"
 	
 	cat <<EOF
 	todo
@@ -80,16 +76,14 @@ echo "$BOLD Examples: $EXIT"
 	todo -e 1 "This needed changing"
 EOF
 
-echo "$BOLD Options: $EXIT"
+echo -e "$BOLD Options: $EXIT"
 	cat <<EOF
-	-a|--add <item> <date>    Adds an item to the todo list, if no date is listed
-                              the item will have the due date of "today"
-
-	-d|--done <index>         Marks the item as done
-
-	-p|--push <index> <date>  Change the item's due date
-
-	-e|--edit <index> <date>  Change the message of the item
+    -a|--add <item> <date>    Adds an item to the todo list, if no date is
+                              listed the item will have the due date of 
+                              "today"
+    -d|--done <index>         Marks the item as done
+    -p|--push <index> <date>  Change the item's due date
+    -e|--edit <index> <date>  Change the message of the item
 EOF
 }
 

@@ -41,13 +41,13 @@ EXIT="\033[0m"
 _usage_(){
 BOLD="\033[1m"
 EXIT="\033[0m"
-echo "$BOLD $(basename "$0") [OPTION] ... [FILE] ... $EXIT"
+echo -e "$BOLD $(basename "$0") [OPTION] ... [FILE] ... $EXIT"
 
 	cat <<EOF
 <++>
 EOF
 
-echo "$BOLD Options: $EXIT"
+echo -e "$BOLD Options: $EXIT"
 	
 	cat <<EOF
 	-a <++>
