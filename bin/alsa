@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # alsaplayer script
 _usage_(){
@@ -31,11 +31,17 @@ fi
 
 enqueue(){
 if [ -d "$1" ]; then
-		alsaplayer --e $1/*.mp3
+		alsaplayer --e $(ls $1/*.mp3 | shuf)
 elif [ -f "$1" ]; then
 		alsaplayer --e $1
 else
 		echo "$1 not found"
+fi
+}
+
+quit(){
+if [ "$(alsaplayer --status | grep name)" == "name: 0" ]; then
+	alsaplayer -n 0 --quit
 fi
 }
 

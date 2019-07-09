@@ -1,0 +1,36 @@
+#!/bin/sh
+
+# a small todo script
+# make sure $HOME/todo exists
+#set -x
+DIR=$HOME/todo
+
+# Formatting
+BOLD="\033[1m"
+
+RED="\033[31m"
+GREEN="\033[32m"
+BLUE="\033[34m"
+MANGETA="\033[35m"
+
+L_RED="\033[91m"
+L_GREEN="\033[92m"
+L_BLUE="\033[94m"
+L_MANGETA="\033[95m"
+
+EXIT="\033[0m"
+
+# Usage
+
+if [ ! -f $DIR ]; then
+		echo "todo missing, creating $DIR"
+		touch $DIR
+fi
+
+# make sure todo is sorted
+echo "$(cat $DIR | sort)" > $DIR
+
+echo "You have $RED$(cat $DIR | grep -c 'a |')$EXIT things on the todo list"
+cat -n $DIR | grep 'a |' | 
+		awk -F "|" '{system("echo \"\\033[94m"$1" \\033[92m"$4" \
+\\033[31m(Due in $(($(($(date -d "$3" \"+%s\") - $(date \"+%s\"))) / 86400)) days)\033[0m\" ")}'

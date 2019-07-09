@@ -8,11 +8,6 @@ if [[ $1 == "" ]]; then
 		exit 4;
 fi
 
-if [[ "$REPO" == "" ]]; then
-		echo "\$REPO not found, using $HOME/repo instead"
-		REPO=$HOME/repo
-fi
-
 read -d '' LINKS << EOF
 bash bash/.bash_profile $HOME
 bash bash/.bashrc $HOME
