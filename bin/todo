@@ -1,7 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
 # a small todo script
-# make sure $HOME/todo exists
 set -e
 DIR=$HOME/todo
 if [ ! -f $DIR ]; then
@@ -15,18 +14,25 @@ EXIT="\033[0m"
 
 # Ops
 _sort_(){
-echo "$(cat $DIR | sort)" > $DIR
+	echo "$(cat $DIR | sort)" > $DIR
 }
 
 _list_(){
-echo -e "$GREY You have $(cat $DIR | grep -c 'a |') things on the todo list$EXIT"
-cat -n $DIR | grep 'a |' |\
-		awk -F "|" '{system("echo -e \"\\033[94m"$1" \\033[0m"$4" \
-\\033[32m($(($(($(date -d "$3" \"+%s\") - $(date \"+%s\"))) / 86400)) days left)\033[0m\" ")}'
+	_sort_
+	printf %b"You have "%s" things to do:"%b"\n" \
+		$GREY $(cat $DIR | grep -c 'a |') $EXIT
+	cat -n $DIR | grep 'a |' |\
+		awk -F "|" '{system("\
+		days=$(($(($(date -d "$3" \"+%s\") - $(date \"+%s\"))) / 86400));\
+		blue=\"\\033[94m\";\
+		green=\"\\033[32m\";\
+		exit=\"\\033[0m\";\
+		printf %b%s%b%s%b\" (\"%s\" days left)\\n\"%b $blue \""$1"\" $exit \""$4"\" $green $days $exit;\
+	")}'
 }
 
 _done_(){
-cat $DIR | grep 'z |' | awk -F "|" '{print $4" due at "$3}'
+	cat $DIR | grep 'z |' | awk -F "|" '{print $4" was due"$3}'
 }
 
 _del_(){
@@ -50,11 +56,13 @@ sed -i "$1 s/| [^|]*$/| $2/" $DIR
 # Usage
 _usage_(){
 BOLD="\033[1m"
-echo -e "$BOLD $(basename "$0") $EXIT"
-echo -e "$BOLD $(basename "$0") -a|--add <item todo> <date>$EXIT"
-echo -e "$BOLD $(basename "$0") -d|--done <index>$EXIT"
-echo -e "$BOLD $(basename "$0") -p|--push <index> <date>$EXIT"
-echo -e "$BOLD $(basename "$0") -e|--edit <index> <message>$EXIT\n"
+echo -e "$BOLD Usage: $EXIT"
+echo -e "	$BOLD $(basename "$0") $EXIT"
+echo -e "	$BOLD $(basename "$0") -a|--add <item todo> <date>$EXIT"
+echo -e "	$BOLD $(basename "$0") -d|--done <index>$EXIT"
+echo -e "	$BOLD $(basename "$0") -p|--push <index> <date>$EXIT"
+echo -e "	$BOLD $(basename "$0") -e|--edit <index> <message>$EXIT\n"
+
 echo -e "$BOLD Description: $EXIT"
 
 	cat <<EOF
@@ -62,7 +70,7 @@ echo -e "$BOLD Description: $EXIT"
 EOF
 
 echo -e "$BOLD Examples: $EXIT"
-	
+
 	cat <<EOF
 	todo
 	todo -a "Compsci Homework" "Sep 6"
@@ -79,11 +87,12 @@ EOF
 echo -e "$BOLD Options: $EXIT"
 	cat <<EOF
     -a|--add <item> <date>    Adds an item to the todo list, if no date is
-                              listed the item will have the due date of 
+                              listed the item will have the due date of
                               "today"
     -d|--done <index>         Marks the item as done
     -p|--push <index> <date>  Change the item's due date
     -e|--edit <index> <date>  Change the message of the item
+    -f                        Show items marked as done
 EOF
 }
 

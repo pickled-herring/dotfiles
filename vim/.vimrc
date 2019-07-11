@@ -41,7 +41,7 @@ Plugin 'flazz/vim-colorschemes'
 "Plugin 'vim-pandoc/vim-pandoc'
 "Plugin 'vim-pandoc/vim-pandoc-syntax'
 "Plugin 'xuhdev/vim-latex-live-preview'
-Plugin 'JamshedVesuna/vim-markdown-preview'
+"Plugin 'JamshedVesuna/vim-markdown-preview'
 
 
 " All Plugin Settings here	------------------
