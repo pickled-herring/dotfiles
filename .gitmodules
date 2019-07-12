@@ -1,0 +1,3 @@
+[submodule "repo/todo"]
+	path = repo/todo
+	url = https://github.com/pickled-herring/todo.git

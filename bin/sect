@@ -14,11 +14,13 @@ _usage_(){
 	footer from a file.
 EOF
 }
+if [ "$1" =="-h" || $# -ne 3 ]; then
+		_usage_
+fi
 
-# Actually no don't do usage stuffs until you find out how to do
-# program logic
 HEADER=$1
 FOOTER=$2
 FILE=$3
 
 cat $FILE | sed -n "/$HEADER/,/$FOOTER/p"
+
