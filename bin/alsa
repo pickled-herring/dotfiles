@@ -45,10 +45,6 @@ if [ "$(alsaplayer --status | grep name)" == "name: 0" ]; then
 fi
 }
 
-if [ "$(alsaplayer --status | grep name)" != "name: 0" ]; then
-	alsaplayer -i daemon -s 0 &
-fi
-
 while getopts 'qpsnbce:h?' c; do
 		case $c in
 				p) play_toggle; exit 0;;
@@ -61,3 +57,7 @@ while getopts 'qpsnbce:h?' c; do
 				h|?) _usage_;;
 esac
 done
+
+if [ "$(alsaplayer --status | grep name)" != "name: 0" -a \("$#" = "0"\) ]; then
+	alsaplayer -i daemon -s 0 &
+fi
