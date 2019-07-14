@@ -58,6 +58,6 @@ while getopts 'qpsnbce:h?' c; do
 esac
 done
 
-if [ "$(alsaplayer --status | grep name)" != "name: 0" -a \("$#" = "0"\) ]; then
+if [ "$(alsaplayer --status | grep name)" != "name: 0" ]; then
 	alsaplayer -i daemon -s 0 &
 fi

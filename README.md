@@ -8,9 +8,9 @@ This repository contains the dotfiles that I maintain for my linux computers.
 * more coming soon?
 ## Installating:
 ```
-git clone https://github.umn.edu/to000002/dotfiles.git
+git clone --recursive https://github.umn.edu/to000002/dotfiles.git
 # or
-git clone https://github.com/pickled-herring/dotfiles.git
+git clone --recursive https://github.com/pickled-herring/dotfiles.git
 cd dotfiles
 chmod +x install.sh
 ./install.sh all
