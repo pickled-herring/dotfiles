@@ -1,0 +1,15 @@
+#!/bin/sh
+# the system resize might give you a "can't resize inside a VT100 terminal"
+# and that's pathetic
+_usage_(){
+cat <<EOF
+resize [-w|--wide] [-l|--long] [-c <lines> <columns>]
+EOF
+}
+case $1 in
+		"")             printf '\033[8;25;90t';;
+		"--long"|"-l")  printf '\033[8;50;90t';;
+		"--wide"|"-w")  printf '\033[8;25;160t';;
+		"-c")           printf "\033[8;%s;%st" $2 $3;;
+		*)              _usage_
+esac
