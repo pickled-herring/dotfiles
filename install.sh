@@ -16,6 +16,8 @@ bash bash/.profile $HOME
 bin bin $HOME
 repo repo $HOME
 
+templates templates $HOME
+
 courses courses/2021/converter.sh $HOME/2021
 courses courses/2041/2041pack.sh $HOME/2041
 

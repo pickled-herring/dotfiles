@@ -1,3 +1,6 @@
 [submodule "repo/todo"]
 	path = repo/todo
 	url = https://github.com/pickled-herring/todo.git
+[submodule "repo/spark"]
+	path = repo/spark
+	url = https://github.com/pickled-herring/spark.git

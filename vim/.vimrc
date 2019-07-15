@@ -110,9 +110,8 @@ set nofoldenable
 inoremap jj <Esc>
 " remap to go to <++> in text files
 map <C-n> <Esc>/<++><Enter>"_c4l
-inoremap {} {}<Esc>ci{
-inoremap () ()<Esc>ci(
-"
+map #x :y x|@x
+" set
 set cursorline
 hi CursorLine term=none cterm=none
 "
