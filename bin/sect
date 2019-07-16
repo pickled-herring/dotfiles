@@ -3,24 +3,29 @@
 # shell script to catch a paragraph or section of input
 # this can be from file or stdin
 
-BOLD="\033[1m"
-EXIT="\033[0m"
-
 _usage_(){
-	echo $BOLD $(basename "$0") header footer file $EXIT 
 	cat <<EOF
+sect <header> <footer> <file>
 
-	Shell script to catch a paragraph or section between a header and a
-	footer from a file.
+Shell script to catch a paragraph or section between a header and a
+footer from a file, including header and footer
 EOF
 }
-if [ "$1" =="-h" || $# -ne 3 ]; then
-		_usage_
+
+case "$1" in
+	-h|help) _usage_; exit 0;;
+	*) break;;
+esac
+header="$1"
+footer="$2"
+shift
+shift
+
+if [ "$#" -gt 0 ]; then
+		file="$1"
+else
+		file="/dev/stdin"
 fi
 
-HEADER=$1
-FOOTER=$2
-FILE=$3
-
-cat $FILE | sed -n "/$HEADER/,/$FOOTER/p"
+cat $file | sed -n "/$header/,/$footer/p"
 
