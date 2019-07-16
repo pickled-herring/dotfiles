@@ -1,8 +1,9 @@
 #!/bin/sh
 
 # Backup utility for local home file.
+# Usage: backup </path/to/destination>
 
-DEST=$HOME/backup
+DEST=$1
 DATE=$(date -I)
 HOST=$(uname -n)
 

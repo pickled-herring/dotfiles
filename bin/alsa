@@ -59,5 +59,5 @@ esac
 done
 
 if [ "$(alsaplayer --status | grep name)" != "name: 0" ]; then
-	alsaplayer -i daemon -s 0 &
+	alsaplayer -i daemon -s 0 & >> /dev/null
 fi
