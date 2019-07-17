@@ -1,31 +1,21 @@
 #!/bin/sh
 
-# Formatting
-BOLD="\033[1m"
-DIM="\033[2m"
-REVERSE="\033[7m"
+# Author: crshd
+# Original: http://crunchbang.org/forums/viewtopic.php?pid=128584#p128584
 
-BLACK="\033[30m"
-RED="\033[31m"
-GREEN="\033[32m"
-YELLOW="\033[33m"
-BLUE="\033[34m"
-MANGETA="\033[35m"
-CYAN="\033[36m"
-GREY="\033[37m"
+# Edited for sh compatibility - pickled-herring
+echo
 
-DARK_GREY="\033[90m"
-L_RED="\033[91m"
-L_GREEN="\033[92m"
-L_YELLOW="\033[93m"
-L_BLUE="\033[94m"
-L_MANGETA="\033[95m"
-L_CYAN="\033[96m"
-WHITE="\033[97m"
+for f in $(seq 0 6); do
+	printf "\033[$((f+41))m\033[$((f+30))m██▓▒░"
+done
 
-EXIT="\033[0m"
-printf %b%b"   "%b"   "%b"   "%b"   "%b"   "%b"   "%b"   "%b"   "%b"\n"\
-		$REVERSE $DARK_GREY $L_RED $L_GREEN $L_YELLOW $L_BLUE $L_MANGETA $L_CYAN $WHITE $EXIT
-printf %b%b"   "%b"   "%b"   "%b"   "%b"   "%b"   "%b"   "%b"   "%b"\n"\
-		$REVERSE $BLACK $RED $GREEN $YELLOW $BLUE $MANGETA $CYAN $GREY $EXIT
+printf "\033[0m\n"
+echo
 
+for f in $(seq 0 6); do
+	printf "\033[$((f+41))m\033[1;$((f+30))m██▓▒░"
+done
+
+printf "\033[0m\n"
+echo

@@ -13,8 +13,9 @@ bash bash/.bash_profile $HOME
 bash bash/.bashrc $HOME
 bash bash/.profile $HOME
 
-bin bin $HOME
-repo repo $HOME
+bin bin/* $HOME/bin
+repo repo/todo $HOME/repo
+repo repo/spark $HOME/repo
 
 templates templates $HOME
 
@@ -44,7 +45,6 @@ echo "$LINKS" | sed "/^$/d" | grep "$pattern" |\
 		awk '{system("\
 	if [ ! -d "$3" ]; then\
 			mkdir -p "$3";\
-	else\
-			ln -s -f $PWD/"$2" "$3";\
 	fi\
+	ln -s -f $PWD/"$2" "$3";\
 ")}'

@@ -1,0 +1,51 @@
+#!/bin/sh
+clear
+printf "\033[2m"
+# cat found here: szorfein/dotfiles/bin/bin/thecat.sh
+cat << EOF
+
+                    .c0N.   .'c.
+         'Okdl:'  ;OMMMMKOKNMMW:;o0l  .'.
+         ;MMMMMMWWMMMMMMMMMMMMMMMMMXKWMMK
+         'MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMK           @
+          NMMMMMMMMMMMMMMMMMMMMMMMMMMMMMO
+          dMMMMMMMMMMMMMMMMMMMMMMMMMMMMM:
+          'MMMMMMMMMMMMMMMMMMMMMMMMMMMMM.
+          'MMMMMMMMMMMMMMMMMMMMMMMMMMMMM;
+          lMMMMM  MMMMMMMMMM  MMMMMMMMMM,
+          KMMMMM  MMMMMMMMMM  MMMMMMMMMM.
+         ;WMMMMMkNMMMMMMMMMMONMMMMMMMMMW:
+       oNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMO
+      .,cxKWMMMMMMMMMMMMMMMMMMMMMMMMMMMXdxo
+         ;kWMMMMMMMMMMMMMMMMMMMMMMMMMMMM:
+        .::,  .;ok0NMMMMWNK0kdoc;'  'cxK0
+                   .:cc:;;.
+                   .o0MMMK'
+                     xMMM:
+                     KMMMl
+                    .MMMMo
+                    ,MMMMx
+                    oMMMMx
+                    OMMMMO
+                    .OMMMd
+                      :Nl
+EOF
+printf "\033[0m"
+memory=$(free -m | awk '/Mem:/ {print $3"M / "$2"M"}')
+user=$(whoami)
+distro=$(cat /etc/os-release | grep PRETTY_NAME | sed "s/PRETTY_NAME=//g")
+uptime=$(uptime | sed "s/,.*$//g;s/^.*up/up/g")
+load=$(cat /proc/loadavg | awk '{print "1min:"$1"  5min:"$2"  15min:"$3}')
+
+printf "\n"
+
+printf "       \033[1m\033[94m%s\033[0m ,:, \033[34m%s\033[0m\n" \
+		"User" "$user" "Distro" "$distro" "Mem" "$memory" \
+		"Uptime" "$uptime" "Load" "$load" |\
+		column -t -s ","
+printf "\n"
+
+if [ ! -z $(which todo) ]; then
+		todo
+fi
+printf "\n"

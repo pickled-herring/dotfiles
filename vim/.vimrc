@@ -110,7 +110,8 @@ set nofoldenable
 inoremap jj <Esc>
 " remap to go to <++> in text files
 map <C-n> <Esc>/<++><Enter>"_c4l
-map #x :y x|@x
+" allow running commands written out in the buffer itself
+map <C-x> :y x|@x
 " set
 set cursorline
 hi CursorLine term=none cterm=none
