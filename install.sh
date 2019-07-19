@@ -19,8 +19,8 @@ repo repo/spark $HOME/repo
 
 templates templates $HOME
 
-courses courses/2021/converter.sh $HOME/2021
-courses courses/2041/2041pack.sh $HOME/2041
+courses courses/2021/converter.sh $HOME/courses/2021
+courses courses/2041/2041pack.sh $HOME/courses/2041
 
 vim vim/.vimrc $HOME
 
@@ -43,8 +43,9 @@ fi
 
 echo "$LINKS" | sed "/^$/d" | grep "$pattern" |\
 		awk '{system("\
-	if [ ! -d "$3" ]; then\
-			mkdir -p "$3";\
-	fi\
+set -x\
+if [ ! -d "$3" ]; then\
+	mkdir -p "$3";\
+fi\
 	ln -s -f $PWD/"$2" "$3";\
 ")}'
