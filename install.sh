@@ -42,10 +42,10 @@ else
 fi
 
 echo "$LINKS" | sed "/^$/d" | grep "$pattern" |\
-		awk '{system("\
-set -x\
+		awk '{print"\
+set -x;\
 if [ ! -d "$3" ]; then\
 	mkdir -p "$3";\
-fi\
-	ln -s -f $PWD/"$2" "$3";\
-")}'
+fi;\
+	ln -s -f -t "$3" $PWD/"$2" ;\
+"}' | bash
