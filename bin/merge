@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Merge 2 text files, This will not result in a conflict just a combination
+
+diff --line-format  %L $1 $2
