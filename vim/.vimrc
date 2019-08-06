@@ -91,7 +91,8 @@ augroup END
 set showmatch
 "
 " for tabs
-set tabstop=4
+set shiftwidth=8
+set cindent
 " syntax on means that functions are different colors and variables are
 " different colors
 "
