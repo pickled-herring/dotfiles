@@ -6,6 +6,7 @@ cat <<EOF
 resize [-w|--wide] [-l|--long] [-c <lines> <columns>]
 EOF
 }
+
 case $1 in
 	"")             printf '\033[8;25;90t';;
 	"--long"|"-l")  printf '\033[8;50;90t';;
