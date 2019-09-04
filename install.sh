@@ -19,9 +19,6 @@ repo repo/spark $HOME/repo
 
 templates templates $HOME
 
-courses courses/2021/converter.sh $HOME/courses/2021
-courses courses/2041/2041pack.sh $HOME/courses/2041
-
 tmux tmux/.tmux.conf $HOME
 
 vim vim/.vimrc $HOME
