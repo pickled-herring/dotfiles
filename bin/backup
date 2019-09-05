@@ -7,13 +7,16 @@ DEST=$1
 HOST=$(uname -n)
 
 if [ ! -d $DEST ]; then
-		echo "$DEST not found, creating"
-		mkdir -p $DEST
+	echo "$DEST not found, creating"
+	mkdir -p $DEST
 fi
 
 ARCHIVE="$HOST.tgz"
 
-tar -czvf $DEST/$ARCHIVE $HOME --exclude=.cache --exclude=$DEST
+tar -czvf $DEST/$ARCHIVE $HOME --exclude=.cache --exclude=wget \
+	--exclude=books \
+	--exclude=alsa \
+	--exclude=$DEST
 echo "saved to $DEST/$ARCHIVE"
 apt list --installed > $DEST/apt-list
 echo "saved list of installed apps to $DESt/apt-list"
