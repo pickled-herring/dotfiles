@@ -1,13 +1,14 @@
 CC = gcc
 FLAGS = -Wall -Werror -g
-LIBS = $(shell pkg-config --cflags --libs sdl2)
+LDFLAGS =
+LIBS =
 
-GCC = $(CC) $(FLAGS)
+OBJ = main.o
 
-all: init
-
-init:
-	$(GCC) -o init init.c $(LIBS)
-
+all: main
 clean:
-	rm -f init
+	rm -f main
+main: $(OBJ)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJ) -o main $(LIBS)
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@

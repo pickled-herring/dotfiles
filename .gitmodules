@@ -4,3 +4,6 @@
 [submodule "repo/spark"]
 	path = repo/spark
 	url = https://github.com/pickled-herring/spark.git
+[submodule "repo/gdb-dashboard"]
+	path = repo/gdb-dashboard
+	url = https://github.com/cyrus-and/gdb-dashboard.git

@@ -92,6 +92,7 @@ set showmatch
 "
 " for tabs
 set shiftwidth=8
+set tabstop=8
 set cindent
 " syntax on means that functions are different colors and variables are
 " different colors
