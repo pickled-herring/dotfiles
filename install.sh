@@ -16,6 +16,7 @@ bash bash/.profile $HOME
 bin bin/* $HOME/bin
 repo repo/todo $HOME/repo
 repo repo/spark $HOME/repo
+repo repo/gdb-dashboard $HOME/repo
 
 templates templates $HOME
 
