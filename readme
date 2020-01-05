@@ -1,0 +1,39 @@
+DOTFILES
+
+DESCRIPTION
+	This repository contains my configuration files, or dotfiles. This
+	collection of dotfiles value self sufficiency - They should be able to
+	work with any system post installation with minimal hassle, and
+	generalization - They should be flexible in their configurations.
+	Whether these files achieve this or not is up for debate.
+
+	The current dotfiles work best with Ubuntu Desktop systems running
+	unity. This is because I wrote them to unify my working environment for
+	both my home computer and university lab machines (which run Ubuntu
+	Desktop).
+
+QUICK INSTALL
+	make
+
+TRACKING FILES
+	The bootstrapping uses make for simplicity reasons. Makefiles are easy
+	to run from the user's perspective and are well known by everyone
+	competent at programming.
+
+	When make is called, the files are symlinked into your home directory
+	so any changes you make to the files from your home directory will be
+	reflected immediately in the dotfile repository.
+
+	If you want to update the dotfiles (assuming you have either forked,
+	cloned or switched to a new branch) you can update the repository
+	quickly by running:
+
+	make commit
+	# Then typing in your commit message
+
+BUGS
+	Should you find any bugs please raise an issue on
+	https://github.com/pickled-herring/dotfiles
+
+AUTHOR
+	This readme is written by Harry To (github.com/pickled-herring)

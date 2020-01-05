@@ -21,3 +21,7 @@ zathura:
 
 tmux:
 	ln -sf $(CPATH)/tmux_conf ~/.tmux.conf
+
+commit:
+	git add -A
+	git commit
