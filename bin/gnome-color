@@ -1,7 +1,6 @@
 #!/bin/bash
 
-colorfile=~/.ocnext
-set -x
+colorfile=~/.gruvbox
 
 source $colorfile
 read PALETTE <<EOF
@@ -16,5 +15,6 @@ GPATH="org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$
 gsettings set $GPATH use-theme-colors false
 gsettings set $GPATH palette "$PALETTE"
 gsettings set $GPATH foreground-color "$FG"
+gsettings set $GPATH bold-color "$FG"
 gsettings set $GPATH background-color "$BG"
 
