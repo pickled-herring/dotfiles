@@ -6,6 +6,9 @@ all: bash vim zathura tmux
 bash: sh
 	ln -sf $(CPATH)/bashrc ~/.bashrc
 	ln -sf $(CPATH)/bash_profile ~/.bash_profile
+	ln -sf $(CPATH)/gruvbox ~/.gruvbox
+	ln -sf $(CPATH)/ocnext ~/.ocnext
+	ln -sf $(CPATH)/iron ~/.iron
 
 sh:
 	ln -sf $(CPATH)/profile ~/.profile

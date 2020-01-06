@@ -6,6 +6,29 @@
 # Prompt shamelessly stolen from system bashrc
 PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
+# Colors for tty shell and urxvt
+colorfile=.iron
+if [ "$TERM" = "linux" ]; then
+	source $colorfile
+	printf "\e]P0$black" #black
+	printf "\e]P8$dgrey" #darkgrey
+	printf "\e]P1$red" #darkred
+	printf "\e]P9$lred" #red
+	printf "\e]P2$green" #darkgreen
+	printf "\e]PA$lgreen" #green
+	printf "\e]P3$yellow" #brown
+	printf "\e]PB$lyellow" #yellow
+	printf "\e]P4$blue" #darkblue
+	printf "\e]PC$lblue" #blue
+	printf "\e]P5$magenta" #darkmagenta
+	printf "\e]PD$lmagenta" #magenta
+	printf "\e]P6$cyan" #darkcyan
+	printf "\e]PE$lcyan" #cyan
+	printf "\e]P7$grey" #lightgrey
+	printf "\e]PF$white" #white
+	clear #for background artifacting
+fi
+
 # Aliases
 alias ls='ls --color'
 alias ll='ls -l'
@@ -25,3 +48,4 @@ export LESS_TERMCAP_se=$'\e[0m'           # end standout-mode
 export LESS_TERMCAP_so=$'\e[01;32m'    # begin standout-mode - info box
 export LESS_TERMCAP_ue=$'\e[0m'           # end underline
 export LESS_TERMCAP_us=$'\e[04;38;5;146m' # begin underline
+

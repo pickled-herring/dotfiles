@@ -1,15 +1,20 @@
 #!/bin/bash
-read GRUVBOX <<EOF
-['#282828', '#cc241d', '#98971a', '#d79921', '#458588', '#b16286', '#689d6a', '#bdae93', '#7c6f64', '#fb4934', '#b8bb26', '#fabd2f', '#83a598', '#d3869b', '#8ec07c', '#ebdbb2']
+
+colorfile=~/.ocnext
+set -x
+
+source $colorfile
+read PALETTE <<EOF
+['#$black', '#$red', '#$green', '#$yellow', '#$blue', '#$magenta', '#$cyan', '#$grey', '#$dgrey', '#$lred', '#$lgreen', '#$lyellow', '#$lblue', '#$lmagenta', '#$lcyan', '#$white']
 EOF
-FG="#ebdbb2"
-BG="#282828"
+FG="#$white"
+BG="#$black"
 
 PROFILE="$(gsettings get org.gnome.Terminal.ProfilesList default| sed "s/^'//g;s/'$//g")"
 GPATH="org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$PROFILE/"
 
 gsettings set $GPATH use-theme-colors false
-gsettings set $GPATH palette "$GRUVBOX"
+gsettings set $GPATH palette "$PALETTE"
 gsettings set $GPATH foreground-color "$FG"
 gsettings set $GPATH background-color "$BG"
 
