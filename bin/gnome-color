@@ -1,6 +1,6 @@
 #!/bin/bash
 
-colorfile=~/.gruvbox
+colorfile=~/.ocnext
 
 source $colorfile
 read PALETTE <<EOF
