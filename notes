@@ -1,0 +1,7 @@
+To install you need to backup your current system.
+Make that easier by adding a backup into the Makefile.
+
+Should also changed how bin is bootstrapped onto the system.
+Currently we remove any bin folder that was there before through ln -sf
+We shoud figure out how to integrate our own bin without moving the bin folder
+of the user.

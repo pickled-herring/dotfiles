@@ -6,8 +6,12 @@
 # Prompt shamelessly stolen from system bashrc
 PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
-# Colors for tty shell and urxvt
-colorfile=.iron
+# Set to vi mode, set jj as escape
+set -o vi
+bind '"jj":"\e"'
+
+# Colors for tty shell
+colorfile=.gruvbox
 if [ "$TERM" = "linux" ]; then
 	source $colorfile
 	printf "\e]P0$black" #black
@@ -49,3 +53,7 @@ export LESS_TERMCAP_so=$'\e[01;32m'    # begin standout-mode - info box
 export LESS_TERMCAP_ue=$'\e[0m'           # end underline
 export LESS_TERMCAP_us=$'\e[04;38;5;146m' # begin underline
 
+# Small little reminder script
+if [ -f remind ]; then
+	source remind
+fi

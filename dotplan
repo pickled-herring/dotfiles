@@ -1,0 +1,40 @@
+let's read unix for now to get a sense of what we're gonna write and figure out
+all the documentation and sources that we can use to make this project the best
+one that we can write
+
+Ideally the dotfiles are
+
++ Well Documented. This means that anyone who reads it understands how we work,
+	how we do stuff everyday, our philosophy on how we use a computer to
+	the main advantages and disadvantages. (Look up more on text files and
+	how you can use them better)
+
+	Add sources and reference material for anyone who will use it.
+
+	Write your documentation like you would read a good book. Figure out
+	your questions, what you want from a computer system and try to answer
+	them to the best of your abilities.
+
++ Self sufficient. That means that it can run on any system right away post
+	install
+
++ Editting and installing them updating them is easy. If not easy then it must
+	be well documented on how to keep this from becoming a mess of stuffs.
+
++ Be only mechanics and not policy. The project should not be surrounding only
+	a certain color palette. Instead it should be able to take on any color
+	palette. It should not have to deal with only gnome terminal but all
+	terminals. Be fitting for not just bash but all shells.
+
++ Useful. There are alot of programs on here that aren't useful and because of
+	that, we end up not using them. Try to recognize what is useful and
+	what isnt. Do this by documenting your everyday life. Then figure out
+	your bottlenecks and automatable tasks.
+
+BIG NOTICE
+Finally, don't be afraid of writing alot, instead, actually prefer writing
+alot. Remember Hemingway wrote Farewell to Arms 50 times over. Anything of
+quality takes time to make.
+
+TO CHANGE
+Remove the unecessary stuff like alsa and stuffs.

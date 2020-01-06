@@ -26,7 +26,7 @@ map <C-x> :y x|@x
 set background=dark
 set t_Co=256
 syntax on
-""colo slate
+colo slate
 
 " cursorline support
 set cursorline
