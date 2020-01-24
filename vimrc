@@ -18,6 +18,8 @@ set listchars=tab:›\ ,eol:¬,trail:∙
 
 " remapped esc key
 inoremap jj <Esc>
+nmap J 30j
+nmap K 30k
 
 " allow running commands written out in the buffer itself
 map <C-x> :y x|@x

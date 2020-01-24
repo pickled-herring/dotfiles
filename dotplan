@@ -24,7 +24,8 @@ Ideally the dotfiles are
 + Be only mechanics and not policy. The project should not be surrounding only
 	a certain color palette. Instead it should be able to take on any color
 	palette. It should not have to deal with only gnome terminal but all
-	terminals. Be fitting for not just bash but all shells.
+	terminals. Be fitting for not just bash but all shells. Follow posix
+	standards when you can.
 
 + Useful. There are alot of programs on here that aren't useful and because of
 	that, we end up not using them. Try to recognize what is useful and
@@ -37,4 +38,8 @@ alot. Remember Hemingway wrote Farewell to Arms 50 times over. Anything of
 quality takes time to make.
 
 TO CHANGE
-Remove the unecessary stuff like alsa and stuffs.
+Status change ascii art to a pickled herring to fit our alterego.
+see https://www.deviantart.com/ethaewyn/art/A-herring-10499194
+https://ascii.co.uk/art/sharks
+
+Remove the backup script, it doesn't really do much. Instead now we can put most of our files on git, and those that we can't we should backup that.

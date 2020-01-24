@@ -42,7 +42,6 @@ alias rm='rm -i'
 alias grep='grep --color'
 
 alias c='\clear'
-alias clear='echo "use c"'
 
 # Less Colors for Man Pages
 export LESS_TERMCAP_mb=$'\e[01;31m'       # begin blinking
@@ -55,5 +54,5 @@ export LESS_TERMCAP_us=$'\e[04;38;5;146m' # begin underline
 
 # Small little reminder script
 if [ -f remind ]; then
-	source remind
+	cat remind
 fi
