@@ -53,6 +53,4 @@ export LESS_TERMCAP_ue=$'\e[0m'           # end underline
 export LESS_TERMCAP_us=$'\e[04;38;5;146m' # begin underline
 
 # Small little reminder script
-if [ -f remind ]; then
-	cat remind
-fi
+remind
