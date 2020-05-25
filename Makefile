@@ -1,6 +1,6 @@
 CPATH=${PWD}
 
-# Defaults to bash but we should be able to change this.
+# Defaults to bash but is configurable
 all: bash vim zathura tmux bin_
 
 bash: sh
