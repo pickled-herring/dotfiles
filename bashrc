@@ -43,6 +43,11 @@ alias grep='grep --color'
 
 alias c='\clear'
 
+# Alias for python convinience and version consistency
+# Python on ubuntu has multiple versions usually.
+alias py='python3.7'
+alias pi='python3.7 -m pip'
+
 # Less Colors for Man Pages
 export LESS_TERMCAP_mb=$'\e[01;31m'       # begin blinking
 export LESS_TERMCAP_md=$'\e[01;38;5;74m'  # begin bold

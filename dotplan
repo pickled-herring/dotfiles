@@ -42,4 +42,5 @@ Status change ascii art to a pickled herring to fit our alterego.
 see https://www.deviantart.com/ethaewyn/art/A-herring-10499194
 https://ascii.co.uk/art/sharks
 
-Remove the backup script, it doesn't really do much. Instead now we can put most of our files on git, and those that we can't we should backup that.
+Remove the backup script, it doesn't really do much. Instead now we can put
+most of our files on git, and those that we can't we should backup that.
